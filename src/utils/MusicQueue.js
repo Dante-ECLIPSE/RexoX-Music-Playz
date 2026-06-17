@@ -56,12 +56,14 @@ class MusicQueue {
     });
 
     try {
-      await entersState(this.connection, VoiceConnectionStatus.Ready, 30_000);
-    } catch {
-      this.connection.destroy();
-      throw new Error('Could not join voice channel in time.');
-    }
-
+  console.log('[VOICE] Joining voice channel...');
+  await entersState(this.connection, VoiceConnectionStatus.Ready, 30_000);
+  console.log('[VOICE] Voice connection ready!');
+} catch (err) {
+  console.error('[VOICE ERROR]', err);
+  this.connection.destroy();
+  throw err;
+}
     this.connection.subscribe(this.player);
 
     this.connection.on(VoiceConnectionStatus.Disconnected, async () => {
