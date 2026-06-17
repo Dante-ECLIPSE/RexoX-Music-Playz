@@ -1,3 +1,4 @@
+console.log("[PLAY] About to resolve");
 const playdl = require('play-dl');
 
 /**
@@ -78,3 +79,4 @@ function fmtDuration(sec) {
 }
 
 module.exports = { resolve, search };
+console.log("[PLAY] About to resolve");
