@@ -1,3 +1,4 @@
+console.log("[PLAY] Command received");
 const { SlashCommandBuilder, ActionRowBuilder, StringSelectMenuBuilder } = require('discord.js');
 const { MusicQueue } = require('../utils/MusicQueue');
 const { resolve, search } = require('../utils/resolver');
@@ -42,6 +43,7 @@ async function handlePlay(interaction, query, client) {
   }
 
   try {
+    console.log("[PLAY] About to resolve");
     const result = await resolve(query);
     const requester = interaction.member?.toString() || interaction.user?.toString() || 'Unknown';
 
@@ -55,6 +57,7 @@ async function handlePlay(interaction, query, client) {
       return reply(interaction, {
         embeds: [
           successEmbed(`Added **${result.songs.length}** songs from playlist **${result.name}** to the queue!`)
+          console.log("[PLAY] Resolve finished");
         ]
       });
     }
