@@ -43,7 +43,6 @@ async function handlePlay(interaction, query, client) {
   }
 
   try {
-    console.log("[PLAY] About to resolve");
     const result = await resolve(query);
     const requester = interaction.member?.toString() || interaction.user?.toString() || 'Unknown';
 
@@ -57,7 +56,6 @@ async function handlePlay(interaction, query, client) {
       return reply(interaction, {
         embeds: [
           successEmbed(`Added **${result.songs.length}** songs from playlist **${result.name}** to the queue!`)
-          console.log("[PLAY] Resolve finished");
         ]
       });
     }
